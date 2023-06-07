@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class PathVariables {
+public class MealRequest {
     /**
      * Exercise 1: Create a GetMapping that returns a list of meals
      * <p>
