@@ -20,8 +20,7 @@ public class MealRequest {
 
     @GetMapping("/meals")
     public List<Meal> getMeals() {
-        Meal.mealList();
-        return Meal.getMeals();
+        return Meal.mealList();
     }
 
     /**
@@ -36,7 +35,7 @@ public class MealRequest {
     @GetMapping("/meal/{name}") //* Sostituisci -> /{name} con -> "/Spagetti alla carbonara" o un'altra pietanza che trovi nella calasse Meal.
     public Meal getMealByName(@PathVariable("name") String name) {
         Meal.mealList();
-        for (Meal meal : Meal.getMeals()) {
+        for (Meal meal : Meal.mealList()) {
             if (meal.getNameMeal().equalsIgnoreCase(name)) {  //* equalsIgnoreCase = ingora differenze di carattere
                 return meal;
             }
@@ -56,7 +55,7 @@ public class MealRequest {
     @GetMapping("/meal/description-match/{phrase}") //* Sostituisci -> /{pharse} con -> "/pollo" o un'altra descrizione che trovi nella calasse Meal.
     public Meal getMealByDescription(@PathVariable("phrase") String phrase) {
         Meal.mealList();
-        for (Meal meal : Meal.getMeals()) {
+        for (Meal meal : Meal.mealList()) {
             if (meal.getDescriptionMeal().toLowerCase().contains(phrase.toLowerCase())) {
                 return meal;
             }
@@ -77,7 +76,7 @@ public class MealRequest {
     public List<Meal> getMealsByPriceRange(@RequestParam("min") double minPrice, @RequestParam("max") double maxPrice) {
         Meal.mealList();
         List<Meal> mealsInRange = new ArrayList<>();
-        for (Meal meal : Meal.getMeals()) {
+        for (Meal meal : Meal.mealList()) {
             if (meal.getPriceMeal() >= minPrice && meal.getPriceMeal() <= maxPrice) {
                 mealsInRange.add(meal);
             }

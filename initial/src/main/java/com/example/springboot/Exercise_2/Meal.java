@@ -7,7 +7,6 @@ public class Meal {
     private String nameMeal;
     private String descriptionMeal;
     private double priceMeal;
-    private static List<Meal> meals;
 
     public Meal(String nameMeal, String descriptionMeal, double priceMeal) {
         this.nameMeal = nameMeal;
@@ -39,15 +38,13 @@ public class Meal {
         this.priceMeal = priceMeal;
     }
 
-    public static List<Meal> getMeals() {
-        return meals;
-    }
 
-    public static void mealList() {
-        meals = new ArrayList<>();
+    public static List<Meal> mealList() {
+        ArrayList <Meal> meals = new ArrayList<>();
         meals.add(new Meal("Spaghetti alla carbonara", "spaghetti, uova, pancetta, pecorino", 12.00));
         meals.add(new Meal("Pizza Margherita", "Pomodoro, Mozzarella", 8.00));
         meals.add(new Meal("Insalata di pollo", "insalata, maionese, pollo", 15.00));
+        return meals;
     }
 }
 
