@@ -10,6 +10,13 @@ import java.util.List;
 
 @RestController
 public class MealController {
+    ArrayList <Meal> meals = new ArrayList<>();
+
+    public MealController() {
+        meals.add(new Meal("Spaghetti alla carbonara", "spaghetti, uova, pancetta, pecorino", 12.00));
+        meals.add(new Meal("Pizza Margherita", "Pomodoro, Mozzarella", 8.00));
+        meals.add(new Meal("Insalata di pollo", "insalata, maionese, pollo", 15.00));
+    }
 
     /**
      * Exercise 1: Create a PutMapping to add a new meal
@@ -19,10 +26,8 @@ public class MealController {
      * 3 - Add the new meal to the list of meals.
      */
 
-    private List<Meal> meals = new ArrayList<>();
-
     @GetMapping("/mealsList")
-    /** Metodo per verificare la lista in Postman*/
+    /** Metodo per verificare la lista in Postman */
     public List<Meal> getMeals() {
         return meals;
     }
@@ -32,6 +37,8 @@ public class MealController {
         meals.add(newMeal);
         return ResponseEntity.ok("New meal added");
     }
+
+    // Rchiesta POST in postman -> Modify body JSON - RAW
 
     /** @PostConstruct // per aggiungere direttamente alla tabella DB meal il nuovo meal
     public void addDefaultMeal() {
@@ -48,7 +55,12 @@ public class MealController {
      * 3 - Update the meal with the corresponding name using the information from the RequestBody.
      */
 
-    @PutMapping("/meal/{name}")  //
+    @PutMapping("/put/meal/{name}")
+    /**
+     * Metodo Modifica pasto.
+     * Sostituire il {name} con il nome ESATTO del meal da Modificare nella richiesta postman.
+     * Verifica con una Get request il corpo RAW JSON da modificare e copiarlo nel terminale postman aggiungendo relative modifiche.
+     */
     public ResponseEntity<String> updateMeal(@PathVariable String name, @RequestBody Meal updatedMeal) {
         for (Meal meal : meals) {
             if (meal.getNameMeal().equals(name)) {
@@ -69,7 +81,12 @@ public class MealController {
      * 3 - Delete the meal with the corresponding name.
      */
 
-    @DeleteMapping("/meal/{name}")
+    @DeleteMapping("/delete/meal/{name}")
+    /**
+     * Metodo Elimina pasto
+     * sostituire il {name} con il nome ESATTO del meal da eliminare nella richiesta postman.
+     * Verifica con una Get request il corpo RAW JSON da modificare e copialo nel terminale postman Modificando il nome del pasto da eliminare.
+     */
     public ResponseEntity<String> deleteMeal(@PathVariable String name) {
         for (Meal meal : meals) {
             if (meal.getNameMeal().equals(name)) {
@@ -88,7 +105,12 @@ public class MealController {
      * 3 - Delete all meals with a price above the price from the PathVariable.
      */
 
-    @DeleteMapping("/meal/price/{price}")
+    @DeleteMapping("/delete/meal/price/{price}")
+    /**
+     * Metodo Elimina pasto dal prezzo
+     * sostituire il {name} con il nome ESATTO del meal da eliminare nella richiesta postman.
+     * Verifica con una Get request il corpo RAW JSON.
+     */
     public ResponseEntity<String> deleteMealsAbovePrice(@PathVariable double price) {
         List<Meal> mealsToRemove = new ArrayList<>();
         for (Meal meal : meals) {
@@ -108,7 +130,12 @@ public class MealController {
      * 3 - Update the price of the meal with the corresponding name using the information from the RequestBody.
      */
 
-    @PutMapping("/meal/{name}/price")
+    @PutMapping("/update/meal/{name}/price")
+    /**
+     * Metodo Modifica pasto.
+     * Sostituire il {name} con il nome ESATTO del meal da Modificare nella richiesta postman.
+     * Verifica con una Get request il corpo RAW JSON da modificare e copiarlo nel terminale postman aggiungendo relative modifiche.
+     */
     public ResponseEntity<String> updateMealPrice(@PathVariable String name, @RequestBody Double updatedPrice) {
         for (Meal meal : meals) {
             if (meal.getNameMeal().equals(name)) {
