@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public class MealDao {
     ArrayList<Meal> meals = new ArrayList<>();
-    public void MealDao() {
+    public MealDao() {
         meals.add(new Meal("Spaghetti alla carbonara", "spaghetti, uova, pancetta, pecorino", 12.00));
         meals.add(new Meal("Pizza Margherita", "Pomodoro, Mozzarella", 8.00));
         meals.add(new Meal("Insalata di pollo", "insalata, maionese, pollo", 15.00));
