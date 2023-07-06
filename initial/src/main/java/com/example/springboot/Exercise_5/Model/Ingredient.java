@@ -1,28 +1,24 @@
-package com.example.springboot.Exercise_5;
+package com.example.springboot.Exercise_5.Model;
 
-/**
- * Exercise 1:
- *
- * Create an Entity called Ingredient
- * Create a controller, service, repository
- * Set up CRUD operations for this entity
- * Drop your ingredient table in your db if it still exists to avoid issues/confusion!
- *
- * public class Ingredient {
- *     private Long id;
- *     private String name;
- *     private boolean isVegetarian;
- *     private boolean isVegan;
- *     private boolean isGlutenFree;
- *     private boolean isLactoseFree;
- * }
- */
+
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
+@Entity
+@Table
 public class Ingredient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private boolean isVegetarian;
+    @Column
     private boolean isVegan;
+    @Column
     private boolean isGlutenFree;
+    @Column
     private boolean isLactoseFree;
 
     /**
@@ -35,6 +31,9 @@ public class Ingredient {
         this.isVegan = isVegan;
         this.isGlutenFree = isGlutenFree;
         this.isLactoseFree = isLactoseFree;
+    }
+
+    public Ingredient() {
     }
 
     /**

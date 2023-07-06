@@ -1,8 +1,12 @@
 package com.example.springboot.Exercise_5.Repository;
 
-import com.example.springboot.Exercise_5.Ingredient;
-import org.springframework.data.repository.CrudRepository;
+import com.example.springboot.Exercise_5.Model.Ingredient;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface IngredientRepository extends CrudRepository<Ingredient, Long> {
-    //Puoi aggiungere le Query
+
+
+@Repository
+public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
+
 }

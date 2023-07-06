@@ -1,11 +1,12 @@
 package com.example.springboot.Exercise_5.Controller;
 
-import com.example.springboot.Exercise_5.Ingredient;
+import com.example.springboot.Exercise_5.Model.Ingredient;
 import com.example.springboot.Exercise_5.Service.IngredientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -14,12 +15,15 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/ingredients")
 public class IngredientController {
+
     private IngredientService ingredientService;
 
     @Autowired
     public IngredientController(IngredientService ingredientService) {
         this.ingredientService = ingredientService;
     }
+
+
 
     @GetMapping
     public ResponseEntity<List<Ingredient>> getAllIngredients() {
