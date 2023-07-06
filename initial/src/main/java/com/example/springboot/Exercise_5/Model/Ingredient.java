@@ -2,7 +2,6 @@ package com.example.springboot.Exercise_5.Model;
 
 
 import jakarta.persistence.*;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @Table

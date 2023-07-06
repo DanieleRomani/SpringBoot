@@ -23,8 +23,6 @@ public class IngredientController {
         this.ingredientService = ingredientService;
     }
 
-
-
     @GetMapping
     public ResponseEntity<List<Ingredient>> getAllIngredients() {
         List<Ingredient> ingredients = ingredientService.getAllIngredients();
